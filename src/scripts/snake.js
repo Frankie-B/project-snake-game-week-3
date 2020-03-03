@@ -3,7 +3,7 @@ class Snake {
     this.direction = 0; //0=up, 1=right, 2=down, 3=left
     this.body = [[4, 4]];
   }
-  moveSnake() {
+  moveSnake(eatenFood) {
     let newPosX;
     let newPosY;
     switch (this.direction) {
@@ -29,7 +29,9 @@ class Snake {
         break;
     }
     this.body.unshift([newPosX, newPosY]);
-    this.body.pop();
+    if (!eatenFood) {
+      this.body.pop();
+    }
   }
 
   changeDirection() {
@@ -54,9 +56,3 @@ class Snake {
 }
 
 //this global scope! not inside the snake or game!
-
-setInterval(function() {
-  snake.moveSnake();
-  snake.changeDirection();
-  myGame.draw();
-}, 275);
