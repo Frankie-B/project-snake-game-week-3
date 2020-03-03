@@ -4,7 +4,11 @@ describe('declare class', function() {
     expect(typeof Snake).toEqual('function');
   });
 
-  it('should declare a constructor function', function() {
-    expect(typeof constructor).toEqual('function');
+  it('should contain a constructor function', function() {
+    expect(constructor instanceof Snake).toEqual(true);
   });
+
+  // it('should contain function turnLeft', function() {
+  //   expect(typeof turnLeft).toEqual('function');
+  // });
 });
