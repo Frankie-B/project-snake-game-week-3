@@ -2,11 +2,21 @@ body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  overflow: hidden;
+}
+
+.container {
+  background-color: chartreuse;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 4.6% 0;
+  width: 100vw;
 }
 
 .grid-x {
   background-color: #539300;
-  border: 1px solid #294900;
+  /* border: 1px solid #294900; */
   width: 50px;
   height: 50px;
 }
@@ -19,7 +29,7 @@ body {
   background-color: #254200;
 }
 
-snake-body {
+.snake-body {
   background-color: #ffffff;
 }
 

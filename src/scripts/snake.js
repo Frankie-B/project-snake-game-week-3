@@ -2,6 +2,11 @@ class Snake {
   constructor() {
     this.direction = 0; //0=up, 1=right, 2=down, 3=left
     this.body = [[4, 4]];
+    // this.gameOver = document.querySelector('gameOver');
+    // this.soundFxLeft = document.querySelector('left');
+    // this.directionUp: new Audio('/assets/audio/up.mp3');
+    // this.directionRight: new Audio('/assets/audio/right.mp3');
+    // this.directionDown: new Audio('/assets/audio/down.mp3');
   }
   moveSnake(eatenFood) {
     let newPosX;
@@ -37,16 +42,16 @@ class Snake {
   changeDirection() {
     document.addEventListener('keydown', function(event) {
       if (event.keyCode === 65 && snake.direction !== 1) {
-        // left.play();
         snake.direction = 3;
+        document.querySelector('.left').play();
       } else if (event.keyCode === 87 && snake.direction !== 2) {
-        // up.play();
+        document.querySelector('.up').play();
         snake.direction = 0;
       } else if (event.keyCode === 68 && snake.direction !== 3) {
-        // right.play();
+        document.querySelector('.right').play();
         snake.direction = 1;
       } else if (event.keyCode === 83 && snake.direction !== 0) {
-        // down.play();
+        document.querySelector('.down').play();
         snake.direction = 2;
       } else {
         console.log('Unknown controls');

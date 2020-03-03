@@ -9,6 +9,7 @@ class Game {
       rowY.querySelectorAll('.grid-x').forEach(event => {
         event.classList.remove('snake');
         event.classList.remove('food');
+        event.classList.remove('snake-body');
       });
     });
     //draw snake
@@ -33,7 +34,7 @@ class Game {
     let randomX = Math.floor(Math.random() * 10);
     let randomY = Math.floor(Math.random() * 10);
     console.log(randomX, randomY);
-    this.food.push([randomX, randomY]);
+    this.food = [randomX, randomY];
     console.log(this.food);
   }
 
@@ -48,10 +49,12 @@ class Game {
   }
 
   eatenFood() {
+    let $audioFx = document.querySelector('.score');
     if (
       snake.body[0][0] === this.food[0] &&
       snake.body[0][1] === this.food[1]
     ) {
+      $audioFx.play();
       this.foodEaten = true;
       this.food = [];
       this.randomFood();
@@ -59,6 +62,23 @@ class Game {
       this.foodEaten = false;
     }
   }
+
+  // collision() {
+  //   let lastX = document.querySelectorAll('gridrow-y')[9];
+  //   let lastY = document.querySelectorAll('gridrow-x')[9];
+  //   let firstX = document.querySelectorAll('gridrow-y')[0];
+  //   let firstY = document.querySelectorAll('gridrow-x')[0];
+  //   if (
+  //     snake.body[0][0] === lastX ||
+  //     snake.body[0][0] === firstX ||
+  //     snake.body[0][1] === firstY ||
+  //     snake.body[0][1] === lastY
+  //   ) {
+  //     console.log('Game Over');
+  //     return true;
+  //   }
+
+  // }
 
   renderEverything() {}
 }
@@ -71,3 +91,5 @@ setInterval(function() {
   snake.changeDirection();
   myGame.draw();
 }, 250);
+// myGame.collision();
+myGame.soundFx();
