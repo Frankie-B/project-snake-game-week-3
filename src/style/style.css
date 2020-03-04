@@ -1,12 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap&subset=latin-ext');
+
 body {
+  font-family: 'Press Start 2p', cursive, Arial, Helvetica, sans-serif;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   overflow: hidden;
+  position: relative;
 }
 
 .container {
-  background-color: chartreuse;
+  /* background-color: chartreuse; */
+  background-image: url('/assets/img/background.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -23,6 +31,7 @@ body {
 
 .gridrow-y {
   display: flex;
+  background-image: url('/assets/img/');
   width: 500px;
 }
 .snake {
@@ -30,9 +39,17 @@ body {
 }
 
 .snake-body {
-  background-color: #ffffff;
+  background-color: #7ef482;
 }
 
 .food {
   background-color: red;
+}
+
+.game-score {
+  color: #ffffff;
+  font-size: 1rem;
+  position: relative;
+  bottom: 40px;
+  right: 150px;
 }

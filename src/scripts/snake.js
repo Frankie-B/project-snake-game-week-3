@@ -2,11 +2,6 @@ class Snake {
   constructor() {
     this.direction = 0; //0=up, 1=right, 2=down, 3=left
     this.body = [[4, 4]];
-    // this.gameOver = document.querySelector('gameOver');
-    // this.soundFxLeft = document.querySelector('left');
-    // this.directionUp: new Audio('/assets/audio/up.mp3');
-    // this.directionRight: new Audio('/assets/audio/right.mp3');
-    // this.directionDown: new Audio('/assets/audio/down.mp3');
   }
   moveSnake(eatenFood) {
     let newPosX;
@@ -57,6 +52,21 @@ class Snake {
         console.log('Unknown controls');
       }
     });
+  }
+
+  detectCollision() {
+    // Self collison
+    // It's impossible for the first 3 pieces of the snake to self collide so the loop starts at 4
+    for (let i = 4; i < this.body.length; i++) {
+      const selfCollison =
+        this.body[i][0] === this.body[0][0] &&
+        this.body[i][1] === this.body[0][1];
+
+      if (selfCollison) {
+        alert('Game over!!!!');
+        return true;
+      }
+    }
   }
 }
 

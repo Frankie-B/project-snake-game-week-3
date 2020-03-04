@@ -2,6 +2,19 @@ class Game {
   constructor() {
     this.food = [3, 7];
     this.foodEaten = false;
+    this.speed = 100;
+    this.score = 0;
+  }
+
+  startGame() {
+    let $startScore = document.querySelector('.player-score');
+    $startScore.innerText = 0;
+  }
+
+  playerScore() {
+    let $score = document.querySelector('.player-score');
+    this.score += 10;
+    $score.innerText = this.score;
   }
   draw() {
     //clears the screen
@@ -58,27 +71,29 @@ class Game {
       this.foodEaten = true;
       this.food = [];
       this.randomFood();
+      this.playerScore();
     } else {
       this.foodEaten = false;
     }
   }
 
-  // collision() {
-  //   let lastX = document.querySelectorAll('gridrow-y')[9];
-  //   let lastY = document.querySelectorAll('gridrow-x')[9];
-  //   let firstX = document.querySelectorAll('gridrow-y')[0];
-  //   let firstY = document.querySelectorAll('gridrow-x')[0];
-  //   if (
-  //     snake.body[0][0] === lastX ||
-  //     snake.body[0][0] === firstX ||
-  //     snake.body[0][1] === firstY ||
-  //     snake.body[0][1] === lastY
-  //   ) {
-  //     console.log('Game Over');
-  //     return true;
-  //   }
-
-  // }
+  collision() {
+    debugger;
+    // let lastX = document.querySelectorAll('.gridrow-y')[9];
+    // let lastY = document.querySelectorAll('.grid-x')[9];
+    // let firstX = document.querySelectorAll('.gridrow-y')[0];
+    // let firstY = document.querySelectorAll('.grid-x')[0];
+    if (
+      snake.body[0][0] < 0 ||
+      snake.body[0][0] === 9 ||
+      snake.body[0][1] === 0 ||
+      snake.body[0][1] === 9
+    ) {
+      debugger;
+      alert('Game Over');
+      return true;
+    }
+  }
 
   renderEverything() {}
 }
@@ -90,6 +105,7 @@ setInterval(function() {
   snake.moveSnake(myGame.foodEaten);
   snake.changeDirection();
   myGame.draw();
+  snake.detectCollision();
+  debugger;
+  myGame.collision();
 }, 250);
-// myGame.collision();
-myGame.soundFx();
