@@ -63,11 +63,9 @@ class Snake {
         this.body[i][1] === this.body[0][1];
 
       if (selfCollison) {
-        alert('Game over!!!!');
+        document.querySelector('.retry-screen').style.display = 'flex';
         return true;
       }
     }
   }
 }
-
-//this global scope! not inside the snake or game!

@@ -4,6 +4,7 @@ class Game {
     this.foodEaten = false;
     this.speed = 100;
     this.score = 0;
+    this.gameInProgress = false;
   }
 
   init() {
@@ -12,6 +13,7 @@ class Game {
     this.score = 0;
     let $score = document.querySelector('.player-score');
     $score.innerText = this.score;
+    this.gameInProgress = false;
   }
 
   startGame() {
@@ -94,30 +96,38 @@ class Game {
   }
 
   collision() {
-    debugger;
-
     if (
       snake.body[0][0] === 0 ||
       snake.body[0][0] === 19 ||
       snake.body[0][1] === 0 ||
       snake.body[0][1] === 19
     ) {
-      debugger;
-      alert('Game Over');
+      document.querySelector('.retry-screen').style.display = 'flex';
+      document.querySelector('.gameOver').play();
       return true;
     }
   }
-
-  renderEverything() {}
 }
 
 let snake = new Snake();
 
 let myGame = new Game();
-setInterval(function() {
-  snake.moveSnake(myGame.foodEaten);
-  snake.changeDirection();
-  myGame.draw();
-  debugger;
-  myGame.gameOver();
-}, 100);
+
+document.querySelector('.start-game').addEventListener('click', function() {
+  myGame.gameInProgress = true;
+});
+
+document.querySelector('.game-over').addEventListener('click', function() {
+  document.querySelector('.retry-screen').style.display = 'none';
+  myGame.gameInProgress = true;
+});
+
+let gameInProgress = setInterval(function() {
+  if (myGame.gameInProgress) {
+    document.querySelector('.start-screen').style.display = 'none';
+    snake.moveSnake(myGame.foodEaten);
+    snake.changeDirection();
+    myGame.draw();
+    myGame.gameOver();
+  }
+}, myGame.speed);

@@ -5,7 +5,7 @@ body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  overflow: hidden;
+  overflow-y: hidden;
   position: relative;
 }
 
@@ -20,6 +20,7 @@ body {
   flex-direction: column;
   padding: 4.6% 0;
   width: 100vw;
+  height: 91vh;
 }
 
 .grid-x {
@@ -31,7 +32,6 @@ body {
 
 .gridrow-y {
   display: flex;
-  background-image: url('/assets/img/');
   width: 400px;
 }
 
@@ -55,6 +55,6 @@ body {
   color: #ffffff;
   font-size: 1rem;
   position: relative;
-  bottom: 40px;
-  right: 120px;
+  bottom: 50px;
+  right: 110px;
 }
