@@ -6,9 +6,25 @@ class Game {
     this.score = 0;
   }
 
+  init() {
+    snake.body = [[10, 10]];
+    snake.direction = 0;
+    this.score = 0;
+    let $score = document.querySelector('.player-score');
+    $score.innerText = this.score;
+  }
+
   startGame() {
     let $startScore = document.querySelector('.player-score');
     $startScore.innerText = 0;
+  }
+
+  gameOver() {
+    snake.detectCollision();
+    this.collision();
+    if (snake.detectCollision() || this.collision()) {
+      myGame.init();
+    }
   }
 
   playerScore() {
@@ -44,8 +60,8 @@ class Game {
   }
 
   randomFood() {
-    let randomX = Math.floor(Math.random() * 10);
-    let randomY = Math.floor(Math.random() * 10);
+    let randomX = Math.floor(Math.random() * 17) + 1;
+    let randomY = Math.floor(Math.random() * 17) + 1;
     console.log(randomX, randomY);
     this.food = [randomX, randomY];
     console.log(this.food);
@@ -79,15 +95,12 @@ class Game {
 
   collision() {
     debugger;
-    // let lastX = document.querySelectorAll('.gridrow-y')[9];
-    // let lastY = document.querySelectorAll('.grid-x')[9];
-    // let firstX = document.querySelectorAll('.gridrow-y')[0];
-    // let firstY = document.querySelectorAll('.grid-x')[0];
+
     if (
-      snake.body[0][0] < 0 ||
-      snake.body[0][0] === 9 ||
+      snake.body[0][0] === 0 ||
+      snake.body[0][0] === 19 ||
       snake.body[0][1] === 0 ||
-      snake.body[0][1] === 9
+      snake.body[0][1] === 19
     ) {
       debugger;
       alert('Game Over');
@@ -105,7 +118,6 @@ setInterval(function() {
   snake.moveSnake(myGame.foodEaten);
   snake.changeDirection();
   myGame.draw();
-  snake.detectCollision();
   debugger;
-  myGame.collision();
-}, 250);
+  myGame.gameOver();
+}, 100);
