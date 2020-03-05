@@ -10,7 +10,7 @@ body {
 }
 
 .container {
-  background-image: url('./assets/img/background.png');
+  background-image: url('/assets/img/background.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -20,6 +20,7 @@ body {
   padding: 4.6% 0;
   width: 100vw;
   height: 91vh;
+  z-index: 5;
 }
 
 .grid-x {
