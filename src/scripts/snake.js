@@ -56,7 +56,6 @@ class Snake {
 
   detectCollision() {
     // Self collison
-    // It's impossible for the first 3 pieces of the snake to self collide so the loop starts at 4
     for (let i = 4; i < this.body.length; i++) {
       const selfCollison =
         this.body[i][0] === this.body[0][0] &&
