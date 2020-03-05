@@ -455,9 +455,21 @@
     <div class="start-screen">
       <p class="instructions">
         This a variation of the classic snake game. To move the snake use W A S
-        D on the keyboard to move UP LEFT DOWN RIGHT respectively
+        D on the keyboard to move UP LEFT DOWN RIGHT respectively.
       </p>
 
+      <br />
+      <p class="difficulty-info">
+        Left hard and right easy.
+      </p>
+      <input
+        type="range"
+        min="50"
+        max="125"
+        class="difficulty"
+        name="difficulty"
+      />
+      <label for="difficulty">Difficulty</label>
       <br />
 
       <p class="start-cta">Press <span>PLAY SNAKE</span>to begin.</p>
@@ -465,6 +477,7 @@
     </div>
 
     <div class="retry-screen">
+      <p class="highscore"></p>
       <p class="game-over-msg">Awwwww GAME OVER... Better luck next time.</p>
       <p class="retry-cta">Press button to <span>TRY AGAIN</span>.</p>
       <button class="game-over">TRY AGAIN</button>

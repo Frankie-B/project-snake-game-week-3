@@ -2,7 +2,7 @@ class Game {
   constructor() {
     this.food = [3, 7];
     this.foodEaten = false;
-    this.speed = 100;
+    this.speed = 120;
     this.score = 0;
     this.gameInProgress = false;
   }
@@ -25,6 +25,9 @@ class Game {
     snake.detectCollision();
     this.collision();
     if (snake.detectCollision() || this.collision()) {
+      document.querySelector(
+        '.highscore'
+      ).innerHTML = `HighScore: ${this.score}`;
       myGame.init();
     }
   }
@@ -107,6 +110,18 @@ class Game {
       return true;
     }
   }
+
+  gameLoad() {
+    let gameInProgress = setInterval(function() {
+      if (myGame.gameInProgress) {
+        document.querySelector('.start-screen').style.display = 'none';
+        snake.moveSnake(myGame.foodEaten);
+        snake.changeDirection();
+        myGame.draw();
+        myGame.gameOver();
+      }
+    }, myGame.speed);
+  }
 }
 
 let snake = new Snake();
@@ -114,6 +129,9 @@ let snake = new Snake();
 let myGame = new Game();
 
 document.querySelector('.start-game').addEventListener('click', function() {
+  let difficulty = document.querySelector('.difficulty').value;
+  myGame.speed = parseInt(difficulty);
+  myGame.gameLoad();
   myGame.gameInProgress = true;
 });
 
@@ -121,13 +139,3 @@ document.querySelector('.game-over').addEventListener('click', function() {
   document.querySelector('.retry-screen').style.display = 'none';
   myGame.gameInProgress = true;
 });
-
-let gameInProgress = setInterval(function() {
-  if (myGame.gameInProgress) {
-    document.querySelector('.start-screen').style.display = 'none';
-    snake.moveSnake(myGame.foodEaten);
-    snake.changeDirection();
-    myGame.draw();
-    myGame.gameOver();
-  }
-}, myGame.speed);
