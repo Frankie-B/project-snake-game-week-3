@@ -27,7 +27,7 @@ class Game {
     if (snake.detectCollision() || this.collision()) {
       document.querySelector(
         '.highscore'
-      ).innerHTML = `HighScore: ${this.score}`;
+      ).innerHTML = `Your Score: ${this.score}`;
       myGame.init();
     }
   }
