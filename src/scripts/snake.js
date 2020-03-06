@@ -63,6 +63,7 @@ class Snake {
 
       if (selfCollison) {
         document.querySelector('.retry-screen').style.display = 'flex';
+        document.querySelector('.gameOver').play();
         return true;
       }
     }
