@@ -2,7 +2,7 @@ class Game {
   constructor() {
     this.food = [3, 7];
     this.foodEaten = false;
-    this.speed = 120;
+    this.speed = 100;
     this.score = 0;
     this.gameInProgress = false;
   }
